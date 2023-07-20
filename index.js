@@ -79,6 +79,33 @@ function isPalindrom(str){
  let result1 = getPalindrom1(strArr1);
  console.log(result1);
 
+ //IIFE
+ (function(palind){
+    var result="";
+    var ans="";
+    for(i=0;i<palind.length;i++)
+    {
+        result+=palind[i];
+        var count=0
+        
+        for(j=0;j<result.length;j++)
+        {
+            if(result[j]===result[((result.length-1)-j)])
+            {
+                count++
+                
+            }
+        }
+        if(count===result.length)
+        {
+            ans+=result+" "
+        }
+        result="";
+    }
+    console.log(ans);
+ 
+}) (["mam", 121 , "south", "adda", "mom", 567765, "madam"]);
+
 
 
  ////prime number
@@ -253,3 +280,59 @@ let str =(string) => {
 }
 
 str("all is well!...")
+
+
+//rotate k times
+
+// Anonymous Function 
+let rotate=function(a,k){
+    n=a.length;
+ c=[];
+  d="";
+  for(i=0;i<n;i++)
+  {
+      c[(i+k)%(n)]=a[i]
+  }
+  for(i=0;i<c.length-1;i++)
+  {
+      d+=c[i]+" "
+  }
+  d+=c[c.length-1]
+  return d;
+}
+console.log(rotate([1,2,3,4,5,6,7,8,9],2))
+
+//IIFT
+(function(a,k){
+    n=a.length;
+ c=[];
+  d="";
+  for(i=0;i<n;i++)
+  {
+      c[(i+k)%(n)]=a[i]
+  }
+  for(i=0;i<c.length-1;i++)
+  {
+      d+=c[i]+" "
+  }
+  d+=c[c.length-1]
+  console.log(d);
+}) ([1,2,3,4,5,6,7,8,9],4);
+
+///Arrow function
+let rotates=(a,k)=>{
+    n=a.length;
+ c=[];
+  d="";
+  for(i=0;i<n;i++)
+  {
+      c[(i+k)%(n)]=a[i]
+  }
+  for(i=0;i<c.length-1;i++)
+  {
+      d+=c[i]+" "
+  }
+  d+=c[c.length-1]
+  return d;
+}
+console.log(rotates([1,2,3,4,5,6,7,8,9],1))
